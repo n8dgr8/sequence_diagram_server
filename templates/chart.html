@@ -1,7 +1,18 @@
 <html>
-    <form action="/chart" method="POST">
-        <textarea name="data" cols="80" rows="40">{{ template_data.chart_data }}</textarea>
-        <br/>
-        <input type="submit" value="Save">
-    </form>
+    <head>
+        <script src="/static/webfont.js"></script>
+        <script src="/static/snap.svg-min.js"></script>
+        <script src="/static/underscore-min.js"></script>
+        <script src="/static/sequence-diagram-min.js"></script>
+        <link href="/static/sequence-diagram-min.css" rel="stylesheet" />
+    </head>
+    <body>
+        <form action="/" method="POST">
+            <textarea name="data" id="chart-data" cols="80" rows="40">{{ template_data.chart_data }}</textarea>
+            <br/>
+            <input type="submit" value="Save">
+        </form>
+
+        <div id="diagram"></div>
+    </body>
 </html>
