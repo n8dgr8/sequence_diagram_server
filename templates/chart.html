@@ -1,10 +1,7 @@
 <html>
-
-    {{ template_data.chart_id }}
-
-    <br/>
-
-    {{ template_data.chart_data }}
-
-
+    <form action="/chart" method="POST">
+        <textarea name="data" cols="80" rows="40">{{ template_data.chart_data }}</textarea>
+        <br/>
+        <input type="submit" value="Save">
+    </form>
 </html>
