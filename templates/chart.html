@@ -17,3 +17,12 @@
         <div id="diagram"></div>
     </body>
 </html>
+<script type="text/javascript">
+    const diagram = Diagram.parse(document.getElementById("chart-data").value);
+
+    const options = {
+        theme: 'simple',
+    };
+
+    diagram.drawSVG("diagram", options);
+</script>
