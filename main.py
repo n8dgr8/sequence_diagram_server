@@ -1,8 +1,29 @@
 from flask import Flask, redirect, render_template, request, url_for
+from flask_assets import Environment, Bundle
 import redis
 import short_url
 
 app = Flask(__name__)
+assets = Environment(app)
+
+javascript = Bundle(
+  '../bower_components/bower-webfontloader/webfont.js',
+  '../bower_components/snap.svg/dist/snap.svg-min.js',
+  '../bower_components/underscore/underscore-min.js',
+  '../bower_components/js-sequence-diagrams/dist/sequence-diagram-min.js',
+  filters='jsmin',
+  output='gen/packed.js'
+)
+
+assets.register('javascript', javascript)
+
+css = Bundle(
+  '../bower_components/js-sequence-diagrams/dist/sequence-diagram-min.css',
+  filters='cssmin',
+  output='screen.css'
+)
+
+assets.register('css', css)
 
 app.redis_client = redis.StrictRedis(
   host='localhost',
