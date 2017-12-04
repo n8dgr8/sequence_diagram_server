@@ -1,3 +1,4 @@
+import os
 from flask import Flask, redirect, render_template, request, url_for
 from flask_assets import Environment, Bundle
 import redis
@@ -25,12 +26,10 @@ css = Bundle(
 
 assets.register('css', css)
 
-app.redis_client = redis.StrictRedis(
-    host='localhost',
-    port=6379,
-    db=0
+app.redis_client = redis.StrictRedis.from_url(
+    os.getenv('REDIS_URL'),
+    errors='strict'
 )
-
 
 @app.route('/', methods=['POST'])
 def create_chart():
