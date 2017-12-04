@@ -7,5 +7,4 @@ dist
 .idea
 bower_components
 venv
-gen
-.webassets-cache
+static
